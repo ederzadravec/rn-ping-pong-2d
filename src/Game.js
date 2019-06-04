@@ -2,6 +2,7 @@ import React from "react";
 import { Dimensions } from "react-native";
 import styled from "styled-components";
 
+import { Client } from "contexts";
 import { Table } from "components";
 
 const size = Dimensions.get("window");
@@ -41,7 +42,9 @@ export class Game extends React.PureComponent {
       <Container>
         <Header />
         <Content>
-          <Table />
+          <Client.Provider>
+            <Table />
+          </Client.Provider>
         </Content>
         <Footer />
       </Container>

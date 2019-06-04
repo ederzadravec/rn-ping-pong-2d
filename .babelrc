@@ -5,6 +5,7 @@
       ["module-resolver",{
         "alias": {
           "components": "./src/components",
+          "contexts": "./src/contexts",
         }
       }
     ]
