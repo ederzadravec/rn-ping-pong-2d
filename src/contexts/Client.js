@@ -13,8 +13,6 @@ class Provider extends React.Component {
     socket.on("lets-go", response => {
       const params = JSON.parse(response);
 
-      Alert.alert("Bora", "Seu parceiro é: " + params.opponent.name);
-
       this.setState({
         opponent: params.opponent,
         playing: true
@@ -30,13 +28,19 @@ class Provider extends React.Component {
     socket.on("abort-game", response => {
       const { gamer } = JSON.parse(response);
 
-      Alert.alert("Poxa", "Seu parceiro arregou");
-
       this.setState({
         gamer: {},
         opponent: {},
         playing: false,
-        waiting: false
+        waiting: true
+      });
+    });
+
+    socket.on("game-params", response => {
+      const { game } = JSON.parse(response);
+
+      this.setState({
+        game
       });
     });
   }
@@ -45,7 +49,8 @@ class Provider extends React.Component {
     playing: false,
     waiting: false,
     gamer: null,
-    opponent: null
+    opponent: null,
+    game: [[]]
   };
 
   join = async ({ name }) => {
