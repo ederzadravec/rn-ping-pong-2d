@@ -4,8 +4,10 @@
     ["@babel/plugin-transform-react-jsx-source",
       ["module-resolver",{
         "alias": {
+          "screens": "./src/screens",
           "components": "./src/components",
           "contexts": "./src/contexts",
+          "game": "./src/game",
         }
       }
     ]

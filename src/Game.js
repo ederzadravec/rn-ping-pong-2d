@@ -3,7 +3,7 @@ import { Dimensions } from "react-native";
 import styled from "styled-components";
 
 import { Client } from "contexts";
-import { Table } from "components";
+import { Table, Init } from "screens";
 
 const size = Dimensions.get("window");
 
@@ -21,7 +21,6 @@ const Header = styled.View`
 const Content = styled.View`
   width: ${size.width}px;
   height: ${size.height - 100}px;
-  background-color: red;
 `;
 
 const Footer = styled.View`
@@ -30,24 +29,20 @@ const Footer = styled.View`
   background-color: blue;
 `;
 
-export class Game extends React.PureComponent {
-  constructor() {
-    super();
+const GameComponent = () => {
+  const { store: { playing } } = React.useContext(Client.Context);
 
-    console.disableYellowBox = true;
-  }
+  return (
+    <Container>
+      <Header />
+      <Content>{playing ? <Table /> : <Init />}</Content>
+      <Footer />
+    </Container>
+  );
+};
 
-  render() {
-    return (
-      <Container>
-        <Header />
-        <Content>
-          <Client.Provider>
-            <Table />
-          </Client.Provider>
-        </Content>
-        <Footer />
-      </Container>
-    );
-  }
-}
+export const Game = () => (
+  <Client.Provider>
+    <GameComponent />
+  </Client.Provider>
+);
