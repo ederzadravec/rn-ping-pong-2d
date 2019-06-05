@@ -1,0 +1,27 @@
+{
+  "name": "ws-ping-pong-2d",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ederzadravec/ws-ping-pong-2d.git",
+  "author": "Bruno Rech <brunno.rech@outlook.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon --exec babel-node index.js "
+  },
+  "dependencies": {
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
+    "express": "^4.17.1",
+    "ramda": "^0.26.1",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-module-resolver": "^3.2.0",
+    "nodemon": "^1.19.1"
+  }
+}
