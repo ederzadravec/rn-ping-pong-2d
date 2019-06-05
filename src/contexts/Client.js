@@ -61,13 +61,18 @@ class Provider extends React.Component {
     socket.emit("left", JSON.stringify(params));
   };
 
+  move = (direction) => {
+    socket.emit("move", JSON.stringify({ direction }));
+  }
+
   render() {
     const { children } = this.props;
 
     const value = {
       store: this.state,
       join: this.join,
-      left: this.left
+      left: this.left,
+      move: this.move,
     };
 
     return (

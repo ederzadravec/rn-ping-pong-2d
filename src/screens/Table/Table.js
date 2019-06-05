@@ -1,5 +1,5 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 import styled from "styled-components";
 
 import { Client } from "contexts";
@@ -33,9 +33,31 @@ const Square = styled.View`
   background-color: ${({ type }) => getCollorSquare(type)};
 `;
 
+const Buttons = styled.View`
+  flex-direction: row;
+`
+
+const Button = styled(TouchableOpacity)`
+  width: 50%;
+  border-color: #555;
+  border-width: 1px;
+  background-color: #eee;
+  border-radius: 5;
+  padding-vertical: 10px;
+  padding-horizontal: 15px;
+`;
+
+const ButtonLabel = styled(Text)`
+  font-size: 16px;
+  font-weight: bold;
+`;
+
+
 export const Table = () => {
   const {
-    store: { game }
+    store: { game },
+    move,
+    
   } = React.useContext(Client.Context);
 
   return (
@@ -47,6 +69,10 @@ export const Table = () => {
           ))
         )}
       </Content>
+      <Buttons>
+        <Button onPress={() => move('left') }><ButtonLabel>LEFT</ButtonLabel></Button>
+        <Button onPress={() => move('right') }><ButtonLabel>RIGHT</ButtonLabel></Button>
+      </Buttons>
     </Container>
   );
 };
